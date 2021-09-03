@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Vendor_Module
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Vendor\Module\Plugin\Sub" type="Vendor\Module\Plugin\Overload">
+        <arguments>
+            <argument name="type" xsi:type="string">-</argument>
+        </arguments>
+    </virtualType>
+    <type name="Vendor\Module\Model\Calculator">
+        <plugin name="Vendor_Module::change_to_sub" type="Vendor\Module\Plugin\Sub" />
+    </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="test_plugin" xsi:type="object">Vendor\Module\Console\Command\TestCommand</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
